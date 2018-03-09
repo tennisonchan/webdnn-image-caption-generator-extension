@@ -9,6 +9,8 @@
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^16.1.1",
@@ -37,6 +39,7 @@
     "wiredep": "^4.0.0"
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "parserOptions": {
       "ecmaVersion": 2016,
       "sourceType": "module",
@@ -51,5 +54,8 @@
     "globals": {
       "chrome": true
     }
+  },
+  "dependencies": {
+    "webdnn": "^1.2.2"
   }
 }
