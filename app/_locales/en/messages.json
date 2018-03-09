@@ -1,6 +1,6 @@
 {
   "appName": {
-    "message": "webdnn-image-caption-generator",
+    "message": "Image Caption Generator",
     "description": "The name of the application"
   },
   "appDescription": {
