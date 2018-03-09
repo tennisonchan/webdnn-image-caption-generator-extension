@@ -13,10 +13,21 @@ const $ = gulpLoadPlugins();
 
 gulp.task('extras', () => {
   return gulp
-    .src(['app/*.*', 'app/_locales/**', '!app/scripts.babel', '!app/*.json', '!app/*.html', '!app/styles.scss'], {
-      base: 'app',
-      dot: true,
-    })
+    .src(
+      [
+        'app/webdnn/**',
+        'app/*.*',
+        'app/_locales/**',
+        '!app/scripts.babel',
+        '!app/*.json',
+        '!app/*.html',
+        '!app/styles.scss',
+      ],
+      {
+        base: 'app',
+        dot: true,
+      },
+    )
     .pipe(gulp.dest('dist'));
 });
 
