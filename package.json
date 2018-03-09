@@ -4,6 +4,9 @@
   "engines": {
     "node": ">=0.8.0"
   },
+  "scripts": {
+    "convert:webdnn": "python py/convert_webdnn.py --sentence datasets/coco.pkl --model models/caption_gen_resnet.model"
+  },
   "devDependencies": {
     "babel-core": "^6.7.2",
     "babel-preset-env": "^1.6.1",
