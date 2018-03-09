@@ -33,8 +33,9 @@ async function runGeneration(url) {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.type === 'GENERATE_CAPTION') {
-    runGeneration(request.payload.url).then(([sentence, ..._]) => {
-      sendResponse({ sentence });
+    let { url } = request.payload;
+    runGeneration(url).then(([caption, ..._]) => {
+      sendResponse({ url, caption });
     });
     return true;
   }

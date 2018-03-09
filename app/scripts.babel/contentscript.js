@@ -2,33 +2,54 @@ import * as WebDNN from 'webdnn';
 import jQuery from 'jquery';
 
 window.$ = window.jQuery = jQuery;
+let imageCaptions = new WeapMap();
 
-async function getImageArray(src) {
-  return await WebDNN.Image.getImageArray(src, {
-    order: WebDNN.Image.Order.CHW,
-    color: WebDNN.Image.Color.BGR,
-    dstW: 224,
-    dstH: 224,
-    bias: [123.68, 116.779, 103.939],
-  });
+function showCaption(url, caption) {
+  if (url && caption) {
+    if (!imageCaptions[url]) {
+      imageCaptions[url] = caption;
+      setAttributes(url, caption);
+    }
+  }
+}
+
+function setAttributes(url, caption) {
+  $('img')
+    .filter((i, img) => img.src === url)
+    .wrap(
+      $('<a/>', {
+        href: '#',
+        class: 'img-cap',
+        title: caption,
+      }),
+    );
 }
 
 $(function() {
   $(document).on('mouseenter', 'img', function(event) {
+    let { src: url, width, height, title } = event.target;
+
     event.stopPropagation();
     event.preventDefault();
-    let { src, width, height } = event.target;
 
-    if (src && width > 100 && height > 100) {
-      chrome.runtime.sendMessage(
-        {
-          type: 'GENERATE_CAPTION',
-          payload: { url: src },
-        },
-        function(response) {
-          console.log('response', response);
-        },
-      );
+    if (url && width > 100 && height > 100) {
+      let caption = imageCaptions[url] || title;
+
+      if (caption) {
+        console.log('Cached!');
+        showCaption(url, caption);
+      } else {
+        chrome.runtime.sendMessage(
+          {
+            type: 'GENERATE_CAPTION',
+            payload: { url },
+          },
+          function(response) {
+            let { url, caption } = response;
+            showCaption(url, caption);
+          },
+        );
+      }
     }
   });
 });
