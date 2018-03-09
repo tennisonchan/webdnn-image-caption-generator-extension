@@ -1,12 +1,23 @@
 {
-  "name": "image-caption-extension",
-  "private": true,
+  "name": "webdnn-image-caption-generator-extension",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Tennison Chan <tennison.chan+gh@gmail.com>",
   "engines": {
     "node": ">=0.8.0"
   },
+  "keywords": ["webdnn", "image", "caption", "image-caption", "chrome-extension"],
   "scripts": {
+    "lint": "gulp lint",
+    "watch": "gulp watch --sass",
+    "build": "gulp build",
+    "package": "gulp build && gulp package",
     "convert:webdnn":
       "python py/convert_webdnn.py --sentence datasets/coco.pkl --model models/caption_gen_resnet.model && mv ./webdnn ./app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tennisonchan/webdnn-image-caption-generator-extension"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",

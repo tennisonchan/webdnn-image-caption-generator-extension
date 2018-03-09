@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "image caption extension",
+    "message": "webdnn-image-caption-generator",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "My Chrome Extension",
+    "message": "A chrome extension using WebDNN to generate image caption when hovering on images",
     "description": "The description of the application"
   }
 }
