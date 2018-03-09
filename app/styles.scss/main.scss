@@ -2,3 +2,9 @@ $padding: 20px;
 body {
   padding: $padding;
 }
+
+.img-caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

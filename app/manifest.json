@@ -16,6 +16,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["scripts/contentscript.js"],
+      "css": ["styles/main.css"],
       "run_at": "document_end",
       "all_frames": false
     }
