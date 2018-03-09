@@ -13,7 +13,7 @@
     "build": "gulp build",
     "package": "gulp build && gulp package",
     "convert:webdnn":
-      "python py/convert_webdnn.py --sentence datasets/coco.pkl --model models/caption_gen_resnet.model && mv ./webdnn ./app"
+      "python py/convert_webdnn.py --backend webassembly --sentence datasets/coco.pkl --model models/caption_gen_resnet.model && mv ./webdnn ./app"
   },
   "repository": {
     "type": "git",
